@@ -78,7 +78,16 @@ def is_picture(file_path):
 
 def get_files():
     ''' get list of files from nautilus-script env '''
-    out = os.environ['NAUTILUS_SCRIPT_SELECTED_FILE_PATHS'].split('\n')
+    try:
+        out = os.environ['NAUTILUS_SCRIPT_SELECTED_FILE_PATHS'].split('\n')
+    except KeyError:
+        sys.stderr.write('This script should be executed as a nautilus script.\n')
+        if len(sys.argv) > 1:
+            sys.stderr.write('Using arguments as picture list...\n')
+            out = sys.argv[1:]
+        else:
+            sys.stderr.write('You need to provide picture list some how.\n')
+            sys.exit(1)
     out = [ elem for elem in out if is_picture(elem) ]
     return out
 
@@ -93,7 +102,7 @@ def set_background(file_path):
 def main():
     ''' main function for nautilus-script call '''
     files = get_files()
-    xml = gen_background_xml(files, disp_time=10)
+    xml = gen_background_xml(files)
     xml_path = os.path.expanduser('~/.gnome2/slideshow background.xml')
     ofh = file(xml_path, 'w')
     ofh.write(xml)

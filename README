@@ -32,6 +32,8 @@ Usage:
 2. Select few pictures (use CTRL).
 3. Right Click -> Scripts -> Set as background  
 
+or via commandline:
+./sbg.py /path/to/myImages*.jpg
 
 
 michal@post.pl
