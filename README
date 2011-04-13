@@ -1,0 +1,38 @@
+============================================
+Slideshow Background Generator for Gnome 2.x
+============================================
+
+Goal:
+-----
+
+To be able to select few photos in nautilus,
+and easily make slideshow background in gnome.
+
+
+TODO:
+-----
+
+- ask for duration (and transition time?) and background name
+- checkboxes: "[v] Add to your backgorunds" and "[v] Set as my background"   
+- create DEB with script in /usr/share/nautilus-scripts/
+- nautilus extension instead of nautilus-script?
+- deb package (PPA?)
+
+
+Instalation:
+------------
+
+install --mode 0755 sbg.py ~/.gnome2/nautilus-scripts/"Set as background"
+
+
+Usage:
+------
+
+1. Open a directory with some pictures in nautilus.
+2. Select few pictures (use CTRL).
+3. Right Click -> Scripts -> Set as background  
+
+
+
+michal@post.pl
+
